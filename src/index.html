@@ -17,9 +17,15 @@
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/3/atlas.min.js"></script>
 
     <script>
-        var map, tileLayer;
+        var map, tileLayer, datasource, popup, searchInput, resultsPanel, searchInputLength, centerMapOnResults;
 
         var weatherTileUrl = 'https://{azMapsDomain}/map/tile?api-version=2022-08-01&tilesetId={layerName}&zoom={z}&x={x}&y={y}';
+
+	// The minimum number of characters needed in the search input before a search is performed.
+        var minSearchInputLength = 3;
+
+        // The number of ms between key strokes to wait before performing a search.
+        var keyStrokeDelay = 150;
 
         function getMap() {
             //Initialize a map instance.
