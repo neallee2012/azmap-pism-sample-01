@@ -80,7 +80,7 @@
                 });
 
                 //Initialize the weather tile layer.
-                updateTileLayer();
+                //updateTileLayer();
             });
 	    //Store a reference to the Search Info Panel.
             resultsPanel = document.getElementById("results-panel");
@@ -429,7 +429,7 @@
 
     <div style="position:absolute;top:10px;left:10px;padding:10px;background-color:white;border-radius:10px;">
         Select weather overlay:
-        <select id="layerSelector" onchange="updateTileLayer()">
+        <select id="layerSelector">
             <option value="microsoft.weather.radar.main" selected="selected">Radar</option>
             <option value="microsoft.weather.infrared.main">Infrared</option>
         </select>
