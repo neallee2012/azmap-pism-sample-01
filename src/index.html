@@ -70,19 +70,7 @@
                     position: 'top-right'
                 });
 
-		map.controls.add([
-                    //Optional. Add the map style control so we can see how the custom control reacts.
-                    new atlas.control.StyleControl(),
-
-                    //Add the geolocation control to the map.
-                    new atlas.control.GeolocationControl({
-                        style: 'auto'
-                    })
-                ], {
-                    position: 'bottom-right'
-                });
-
-                //Initialize the weather tile layer.
+		//Initialize the weather tile layer.
                 //updateTileLayer();
             });
 	    //Store a reference to the Search Info Panel.
