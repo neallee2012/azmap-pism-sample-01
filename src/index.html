@@ -36,7 +36,7 @@
             //Initialize a map instance.
             map = new atlas.Map('myMap', {
                 center: [121.00, 27.73],
-                zoom: 4,
+                zoom: 3,
                 view: 'Auto',
                 style: 'satellite_road_labels',
 
@@ -63,7 +63,10 @@
                 //Create a style control and add it to the map.
                 map.controls.add(new atlas.control.StyleControl({
                     mapStyles: 'all'
-                }), {
+                }), new atlas.control.GeolocationControl({
+                        style: 'auto'
+                    })
+                ], {
                     position: 'top-right'
                 });
 
