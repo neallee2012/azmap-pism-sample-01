@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Azure Maps Leaflet options - Azure Maps Web SDK Samples</title>
 
@@ -20,6 +20,8 @@
 
 <script>
 function GetMap() {
+            var language = 'zh-HanT-TW';
+            var tilesetId = 'microsoft.base.road';
             //Create a map instance.
             map = L.map('myMap', {
                 center: [24.776061221883467, 120.99635144930664],
@@ -29,6 +31,7 @@ function GetMap() {
             //Alternatively, create an instance of the Azure Maps Tile Layer and add it to the map. 
             layer = new L.TileLayer.AzureMaps({ 
                 //Add authentication details for connecting to Azure Maps.
+                language: language ,tilesetId: tilesetId ,
                 authOptions: {
                     //Use Azure Active Directory authentication.
                 /*  authType: "anonymous",
