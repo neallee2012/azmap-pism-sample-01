@@ -46,6 +46,129 @@ function GetMap() {
                 }
             });
             map.addLayer(layer);
+
+            var geojsonData = {
+                type: "FeatureCollection",
+                features: [
+                    {
+                        type: "Feature",
+                        properties: {
+                            name: "F18 Yard E",
+                            count: 150,
+                            url: "https://dashboard-pivotenabler-eks002.sa.wise-paas.com/d/VfEEyzxIk/zone_view?var-groupId=R3JvdXA.ZfKqzVIgTAAH3BA-&orgId=5"
+                        },
+                        geometry: {
+                            coordinates: [
+                                [
+                                    [120.99648060474414, 24.773473408622607],
+                                    [120.9965445751011, 24.77338141680403],
+                                    [120.99842171120463, 24.771948173595362],
+                                    [120.99875767590595, 24.772103119604637],
+                                    [120.99913097416555, 24.77242269165741],
+                                    [120.99962158928355, 24.77268416193688],
+                                    [121.00011220440143, 24.773240994956325],
+                                    [120.99770714253907, 24.774761375625417],
+                                    [120.997605819851, 24.774630642742494],
+                                    [120.99731785010908, 24.774349808674813],
+                                    [120.99722719296682, 24.774335282757974],
+                                    [120.99648060474414, 24.773473408622607]
+                                ]
+                            ],
+                            type: "Polygon"
+                        }
+                    },
+                    {
+                        type: "Feature",
+                        properties: {
+                            name: "F14A",
+                            count: 10,
+                            url: "-"
+                        },
+                        geometry: {
+                            coordinates: [
+                                [
+                                    [120.9892430772224, 24.775719065213252],
+                                    [120.99111922649837, 24.774329889439926],
+                                    [120.99155537928345, 24.774197885502957],
+                                    [120.99193614758661, 24.774235600928037],
+                                    [120.99230306976841, 24.77441789198585],
+                                    [120.99284999151439, 24.774927048351074],
+                                    [120.99064153535409, 24.777039082086873],
+                                    [120.9892430772224, 24.775719065213252]
+                                ]
+                            ],
+                            type: "Polygon"
+                        }
+                    },
+                    {
+                        type: "Feature",
+                        properties: {
+                            name: "F6",
+                            count: 40,
+                            url: "-",
+                        },
+                        geometry: {
+                            coordinates: [
+                                [
+                                    [120.99291229905452, 24.774996192881787],
+                                    [120.99512075521318, 24.776863080648226],
+                                    [120.99288461338676, 24.778861938205353],
+                                    [120.99242076836214, 24.77938364762845],
+                                    [120.99226846104062, 24.77935221941155],
+                                    [120.99202615393938, 24.77916993559984],
+                                    [120.99199153863856, 24.779031651149793],
+                                    [120.99178384683654, 24.778704796383565],
+                                    [120.9917284623561, 24.77867336799548],
+                                    [120.99071769558725, 24.77710822419172],
+                                    [120.99291229905452, 24.774996192881787]
+                                ]
+                            ],
+                            type: "Polygon"
+                        }
+                    }
+                ]
+            };
+            L.geoJSON(geojsonData, {
+                onEachFeature: function (feature, layer) {
+                    // Add label for each feature
+                    var label = L.marker(layer.getBounds().getCenter(), {
+                      icon: L.divIcon({
+                        iconSize: "auto",
+                        html: `<div style="color:#D68B00;border:1px #ccc solid;padding:6px;white-space: nowrap;">${feature.properties.name}</div>`
+                      })
+                    }).addTo(map);
+         
+                    var tooltipContent = `<div>${feature.properties.name}<br>事件數：${feature.properties.count}
+        </div>`;
+                    // Bind tooltip
+                    layer.bindTooltip(tooltipContent, {
+                        direction: "left",
+                        permanent: false
+                    });
+         
+                    // Add click event
+                    layer.on("click", function (e) {
+                        if (feature.properties.url != '-') {
+                            window.open(feature.properties.url, "_blank");
+                        }
+                    });
+         
+                    // Change color
+                    if (feature.properties.count > 50) {
+                        layer.setStyle({
+                            color: "red"
+                        });
+                    } else if (feature.properties.count > 30) {
+                        layer.setStyle({
+                            color: "orange"
+                        });
+                    } else {
+                        layer.setStyle({
+                            color: "green"
+                        });
+                    }
+                }
+            }).addTo(map);
         }
 
         function tilesetIdUpdated(elm){
