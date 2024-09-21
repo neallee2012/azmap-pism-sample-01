@@ -170,27 +170,6 @@ function GetMap() {
                 }
             }).addTo(map);
         }
-        // Add reset button
-        var resetButton = L.control({
-            position: "topright"
-        })
-        resetButton.onAdd = function (map) {
-          var div = L.DomUtil.create("div", "leaflet-bar leaflet-control");
-          div.innerHTML = `<button id="button" style="color:#D68B00">reset</button>`;
-          return div;
-        };
-        resetButton.addTo(map);
-     
-        document.getElementById("button").addEventListener("click", function (e) {
-            map.setView({ lat: 24.776061221883467, lng: 120.99635144930664 }, 16);
-        })
-     
-    		const ro = new ResizeObserver(function(){
-    		// 	console.log('content dimension changed');
-    			map.invalidateSize();
-    		});
-    		ro.observe(document.querySelector("#map"));
-    	}, 500);
 
         function tilesetIdUpdated(elm){
             layer.setTilesetId(elm.selectedOptions[0].text);
