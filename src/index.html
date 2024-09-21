@@ -185,12 +185,11 @@ function GetMap() {
                 map.setView({ lat: 24.776061221883467, lng: 120.99635144930664 }, 16);
             })
          
-        		const ro = new ResizeObserver(function(){
-        		// 	console.log('content dimension changed');
-        			map.invalidateSize();
-        		});
-        		ro.observe(document.querySelector("#map"));
-        	}, 500);
+        	const ro = new ResizeObserver(function(){
+        	// 	console.log('content dimension changed');
+        		map.invalidateSize();
+        	});
+        	ro.observe(document.querySelector("#map"));
         }
 
         function tilesetIdUpdated(elm){
