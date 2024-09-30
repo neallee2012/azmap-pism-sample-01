@@ -19,6 +19,8 @@
     <script src="../azure-maps-leaflet.min.js"></script>  
 
 <script>
+var weatherTileUrl = 'https://atlas.microsoft.com/map/tile?api-version=2022-08-01&tilesetId={layerName}&zoom={z}&x={x}&y={y}';
+
 function GetMap() {
             var language = 'zh-HanT-TW';
             var tilesetId = 'microsoft.base.road';
@@ -172,6 +174,8 @@ function GetMap() {
                     }
                 }
             }).addTo(map);
+           //Initialize the weather tile layer.
+        updateTileLayer();
         }
 
         function tilesetIdUpdated(elm){
@@ -185,7 +189,27 @@ function GetMap() {
 
         function trafficFlowThicknessUpdated(elm){
             layer.setTrafficFlowThickness(elm.value);
-        }	
+        }
+function updateTileLayer() {
+    var layerName = document.getElementById("layerSelector").value;
+
+    var tileUrl = weatherTileUrl.replace('{layerName}', layerName);
+
+    if (!tileLayer) {
+        //Create a tile layer and add it to the map below the label layer.
+        tileLayer = new atlas.layer.TileLayer({
+            tileUrl: tileUrl,
+            opacity: 0.9,
+            tileSize: 256
+        });
+
+        map.layers.add(tileLayer, 'labels');
+    } else {
+        tileLayer.setOptions({
+            tileUrl: tileUrl
+        });
+    }
+}
 </script>
 <style>
         html,
