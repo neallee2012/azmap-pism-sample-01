@@ -176,7 +176,7 @@ function GetMap() {
             }).addTo(map);
             //Initialize the weather tile layer.
             var layerName = document.getElementById("layerSelector").value;
-            var tileUrl = weatherTileUrl.replace('{layerName}', layerName);
+            var tileUrl = weatherTileUrl;
             if (!tileLayer) {
                 //Create a tile layer and add it to the map below the label layer.
                 tileLayer = new L.TileLayer({
