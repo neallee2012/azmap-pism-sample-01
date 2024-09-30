@@ -20,9 +20,8 @@
 
 <script>
 var weatherTileUrl = 'https://atlas.microsoft.com/map/tile?api-version=2022-08-01&tilesetId={layerName}&zoom={z}&x={x}&y={y}';
-
+var tileLayer;
 function GetMap() {
-            var tileLayer;
             var language = 'zh-HanT-TW';
             var tilesetId = 'microsoft.base.road';
             //Create a map instance.
