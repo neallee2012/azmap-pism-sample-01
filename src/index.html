@@ -190,7 +190,7 @@ function GetMap() {
             };
 
             //Add the base map and overlay layers to the layers control.
-            L.control.layers(baseLayers, overlays).addTo(map);
+            L.control.layers(overlays).addTo(map);
         }
 
         function tilesetIdUpdated(elm){
