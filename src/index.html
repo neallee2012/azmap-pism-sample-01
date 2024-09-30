@@ -174,8 +174,24 @@ function GetMap() {
                     }
                 }
             }).addTo(map);
-           //Initialize the weather tile layer.
-        updateTileLayer();
+            //Initialize the weather tile layer.
+            var layerName = document.getElementById("layerSelector").value;
+            var tileUrl = weatherTileUrl.replace('{layerName}', layerName);
+            if (!tileLayer) {
+                //Create a tile layer and add it to the map below the label layer.
+                tileLayer = new L.TileLayer({
+                    tileUrl: tileUrl,
+                    opacity: 0.9,
+                    tileSize: 256
+                });
+        
+                map.layers.add(tileLayer, 'labels');
+            } else {
+                tileLayer.setOptions({
+                    tileUrl: tileUrl
+                });
+            }
+            map.addLayer(tileLayer);
         }
 
         function tilesetIdUpdated(elm){
@@ -190,26 +206,6 @@ function GetMap() {
         function trafficFlowThicknessUpdated(elm){
             layer.setTrafficFlowThickness(elm.value);
         }
-function updateTileLayer() {
-    var layerName = document.getElementById("layerSelector").value;
-
-    var tileUrl = weatherTileUrl.replace('{layerName}', layerName);
-
-    if (!tileLayer) {
-        //Create a tile layer and add it to the map below the label layer.
-        tileLayer = new atlas.layer.TileLayer({
-            tileUrl: tileUrl,
-            opacity: 0.9,
-            tileSize: 256
-        });
-
-        map.layers.add(tileLayer, 'labels');
-    } else {
-        tileLayer.setOptions({
-            tileUrl: tileUrl
-        });
-    }
-}
 </script>
 <style>
         html,
