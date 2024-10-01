@@ -22,6 +22,7 @@
 var weatherTileUrl = 'https://atlas.microsoft.com/map/tile?api-version=2022-08-01&tilesetId={layerName}&zoom={z}&x={x}&y={y}';
 var tileLayer;
 var authOptions = { authType: 'subscriptionKey', subscriptionKey: '4Urjhelq5dZftnL89xDiq4p1MlqwdSvzFNoKnytbf-w'}
+var url = "https://psimazmap.azurewebsites.net/api/GetAzureMapsToken";
 function GetMap() {
             var language = 'zh-HanT-TW';
             var tilesetId = 'microsoft.base.road';
@@ -39,10 +40,12 @@ function GetMap() {
                     //Use Azure Active Directory authentication.
                     authType: "anonymous",
                     clientId: "2cb761a6-2843-4eef-bbc9-b617af79f54b", //Your Azure Active Directory client id for accessing your Azure Maps account.
-                    getToken: function (resolve, reject, map) {
-                        //URL to your authentication service that retrieves an Azure Active Directory Token.
-                        var tokenServiceUrl = "https://psimazmap.azurewebsites.net/api/GetAzureMapsToken";
-                        fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
+                    getToken: function(resolve, reject, map) {
+                        fetch(url).then(function(response) {
+                            return response.text();
+                        }).then(function(token) {
+                            resolve(token);
+                        });
                     }
 
                     //Alternatively, use an Azure Maps key. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
@@ -50,6 +53,14 @@ function GetMap() {
                     //subscriptionKey: '4Urjhelq5dZftnL89xDiq4p1MlqwdSvzFNoKnytbf-w'
                 }
             });
+            // use the following events to debug, you can remove them at any time.
+            map.events.add("tokenacquired", function () {
+                console.log("token acquired");
+            });
+            map.events.add("error", function (err) {
+                console.log(JSON.stringify(err.error));
+            });
+            
             map.addLayer(layer);
 
             var geojsonData = {
