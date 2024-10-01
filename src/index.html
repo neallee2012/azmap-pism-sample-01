@@ -46,18 +46,7 @@ function GetMap() {
             layer = new L.TileLayer.AzureMaps({ 
                 //Add authentication details for connecting to Azure Maps.
                 language: language ,tilesetId: tilesetId ,
-                authOptions: {
-                    //Use Azure Active Directory authentication.
-                    authType: "anonymous",
-                    clientId: "2cb761a6-2843-4eef-bbc9-b617af79f54b", //Your Azure Active Directory client id for accessing your Azure Maps account.
-                    getToken: function(resolve, reject, map) {
-                        fetch(url).then(function(response) {
-                            return response.text();
-                        }).then(function(token) {
-                            resolve(token);
-                        });
-                    }
-
+                authOptions: authOptions
                     //Alternatively, use an Azure Maps key. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
                     //authType: 'subscriptionKey',
                     //subscriptionKey: '4Urjhelq5dZftnL89xDiq4p1MlqwdSvzFNoKnytbf-w'
