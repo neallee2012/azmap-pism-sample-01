@@ -53,14 +53,6 @@ function GetMap() {
                     //subscriptionKey: '4Urjhelq5dZftnL89xDiq4p1MlqwdSvzFNoKnytbf-w'
                 }
             });
-            // use the following events to debug, you can remove them at any time.
-            map.events.add("tokenacquired", function () {
-                console.log("token acquired");
-            });
-            map.events.add("error", function (err) {
-                console.log(JSON.stringify(err.error));
-            });
-            
             map.addLayer(layer);
 
             var geojsonData = {
