@@ -45,12 +45,7 @@ function GetMap() {
             //Alternatively, create an instance of the Azure Maps Tile Layer and add it to the map. 
             layer = new L.TileLayer.AzureMaps({ 
                 //Add authentication details for connecting to Azure Maps.
-                language: language ,tilesetId: tilesetId ,
-                authOptions: authOptions
-                    //Alternatively, use an Azure Maps key. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
-                    //authType: 'subscriptionKey',
-                    //subscriptionKey: '4Urjhelq5dZftnL89xDiq4p1MlqwdSvzFNoKnytbf-w'
-                }
+                language: language ,tilesetId: tilesetId , authOptions: authOptions
             });
             map.addLayer(layer);
 
