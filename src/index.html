@@ -41,8 +41,7 @@ function GetMap() {
                     clientId: "2cb761a6-2843-4eef-bbc9-b617af79f54b", //Your Azure Active Directory client id for accessing your Azure Maps account.
                     getToken: function (resolve, reject, map) {
                         //URL to your authentication service that retrieves an Azure Active Directory Token.
-                        var tokenServiceUrl = "https://psimazmap.azurewebsites.net/api/GetAzureMapsToken?";
-
+                        var tokenServiceUrl = "https://psimazmap.azurewebsites.net/api/GetAzureMapsToken";
                         fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
                     }
 
