@@ -172,9 +172,16 @@ function GetMap() {
                 }
             }).addTo(map);
             //Create a group of overlay layers.
-            var overlays = {
+            var weatheroverlays = {
                 'Weather - Infrared': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.weather.infrared.main' }),
-                'Weather - Radar': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.weather.radar.main' }),
+                'Weather - Radar': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.weather.radar.main' })
+            };
+
+            //Add the base map and overlay layers to the layers control.
+            L.control.layers(weatheroverlays).addTo(map);
+
+             //Create a group of overlay layers.
+            var trafficflowoverlays = {
                 'Traffic flow - absolute': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.traffic.flow.absolute' }),
                 'Traffic flow - reduced-sensitivity': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.traffic.flow.reduced-sensitivity' }),
                 'Traffic flow - relative': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.traffic.flow.relative' }),
@@ -186,7 +193,18 @@ function GetMap() {
             };
 
             //Add the base map and overlay layers to the layers control.
-            L.control.layers(overlays).addTo(map);
+            L.control.layers(trafficflowoverlays).addTo(map);
+
+            //Create a group of overlay layers.
+            var trafficincidentoverlays = {
+                'Traffic incident - night': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.traffic.incident.night' }),
+                'Traffic incident - s1': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.traffic.incident.s1' }),
+                'Traffic incident - s2': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.traffic.incident.s2' }),
+                'Traffic incident - s3': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.traffic.incident.s3' })
+            };
+
+            //Add the base map and overlay layers to the layers control.
+            L.control.layers(trafficincidentoverlays).addTo(map);
         }
 
         function tilesetIdUpdated(elm){
