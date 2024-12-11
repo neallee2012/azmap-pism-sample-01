@@ -23,7 +23,7 @@ var weatherTileUrl = 'https://atlas.microsoft.com/map/tile?api-version=2022-08-0
 var tileLayer;
 var url = "https://psimazmap.azurewebsites.net/api/GetAzureMapsToken";
 var authOptions = {
-    //authType: "anonymous",
+    authType: "aad",
     clientId: "2cb761a6-2843-4eef-bbc9-b617af79f54b", //Your Azure Active Directory client id for accessing your Azure Maps account.
     getToken: function(resolve, reject, map) {
         fetch(url).then(function(response) {
