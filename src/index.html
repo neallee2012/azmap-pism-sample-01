@@ -134,23 +134,7 @@ function GetMap() {
                     }
                 ]
             };
-	    var psimeventgeojson = L.geoJson(geojsonData, {
-    		style: function (feature) {
-			return {color: feature.properties.color};
-    		},
-    		onEachFeature: function (feature, layer) {
-    			var popupText = 'Fab Name: ' + feature.properties.name;
-			popupText += '<br/>Event Count: ' + feature.properties.count;
-    			if (feature.properties.color) {
-    				popupText += '<br/>color: ' + feature.properties.color;
-    			}
-    			layer.bindPopup(popupText);
-    		}
-    	    });
-	    var eventmarkers = L.markerClusterGroup();
-	    eventmarkers.addLayer(psimeventgeojson);
-	    map.addLayer(eventmarkers);
-	
+	    
             L.geoJSON(geojsonData, {
                 onEachFeature: function (feature, layer) {
                     // Add label for each feature
@@ -161,8 +145,7 @@ function GetMap() {
                       })
                     }).addTo(map);
          
-                    var tooltipContent = `<div>${feature.properties.name}<br>事件數：${feature.properties.count}
-        </div>`;
+                    var tooltipContent = `<div>${feature.properties.name}<br>事件數：${feature.properties.count}</div>`;
                     // Bind tooltip
                     layer.bindTooltip(tooltipContent, {
                         direction: "left",
@@ -192,7 +175,24 @@ function GetMap() {
                     }
                 }
             }).addTo(map);
-
+	    //PSIM event aggregated marker cluster
+  	    var psimeventgeojson = L.geoJson(geojsonData, {
+    		style: function (feature) {
+			return {color: feature.properties.color};
+    		},
+    		onEachFeature: function (feature, layer) {
+    			var popupText = 'Fab Name: ' + feature.properties.name;
+			popupText += '<br/>Event Count: ' + feature.properties.count;
+    			if (feature.properties.color) {
+    				popupText += '<br/>color: ' + feature.properties.color;
+    			}
+    			layer.bindPopup(popupText);
+    		}
+    	    });
+	    var eventmarkers = L.markerClusterGroup();
+	    eventmarkers.addLayer(psimeventgeojson);
+	    map.addLayer(eventmarkers);
+	    //Earthquake aggregated marker cluster
 	    fetch(earthquakeFeed).then((response) => {
 	      return response.json();
 	    }).then((data) => {
