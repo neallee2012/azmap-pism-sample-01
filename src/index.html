@@ -180,7 +180,7 @@ function GetMap() {
                 ]
             };
 
-            /*L.geoJSON(geojsonData, {
+            L.geoJSON(geojsonData, {
                 onEachFeature: function (feature, layer) {
                     // Add label for each feature
                     /*var label = L.marker(layer.getBounds().getCenter(), {
@@ -202,7 +202,7 @@ function GetMap() {
                         if (feature.properties.url != '-') {
                             window.open(feature.properties.url, "_blank");
                         }
-                    });
+                    });*/
          
                     // Change color
                     if (feature.properties.count > 50) {
@@ -219,7 +219,7 @@ function GetMap() {
                         });
                     }
                 }
-            }).addTo(map);*/
+            }).addTo(map);
 	    //PSIM event aggregated marker cluster
   	    var psimeventgeojson = L.geoJson(psimEventGeoJsonData, {
     		style: function (feature) {
