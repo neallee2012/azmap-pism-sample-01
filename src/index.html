@@ -180,7 +180,10 @@ function GetMap() {
 	      return response.json();
 	    }).then((data) => {
 	      earthquakedata = data;
+	      alert(earthquakedata);
 	    })
+	    alert("earthquakedata");
+	    alert(earthquakedata);
             var earthquakegeojson = L.geoJson(earthquakedata, {
     			style: function (feature) {
     				return {color: feature.properties.color};
