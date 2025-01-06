@@ -175,9 +175,12 @@ function GetMap() {
                     }
                 }
             }).addTo(map);
-
-
-            var earthquakegeojson = L.geoJson(earthquakeFeed, {
+	    fetch(earthquakeFeed).then((response) => {
+	      return response.json();
+	    }).then((data) => {
+	      let earthquakedata = data;
+	    })
+            var earthquakegeojson = L.geoJson(earthquakedata, {
     			style: function (feature) {
     				return {color: feature.properties.color};
     			},
