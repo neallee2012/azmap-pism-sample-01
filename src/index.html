@@ -185,7 +185,7 @@ function GetMap() {
                         iconSize: "auto",
                         html: `<div style="color:#D68B00;border:1px #ccc solid;padding:6px;white-space: nowrap;">${feature.properties.name}</div>`
                       })
-                    }).addTo(map);*/
+                    }).addTo(map);
          
                     var tooltipContent = `<div>${feature.properties.name}<br>事件數：${feature.properties.count}</div>`;
                     // Bind tooltip
@@ -199,7 +199,7 @@ function GetMap() {
                         if (feature.properties.url != '-') {
                             window.open(feature.properties.url, "_blank");
                         }
-                    });
+                    });*/
          
                     // Change color
                     if (feature.properties.count > 50) {
