@@ -180,11 +180,7 @@ function GetMap() {
 	      return response.json();
 	    }).then((data) => {
 	      earthquakedata = data;
-	      alert(earthquakedata);
-	    })
-	    alert("earthquakedata");
-	    alert(earthquakedata);
-            var earthquakegeojson = L.geoJson(earthquakedata, {
+	      var earthquakegeojson = L.geoJson(earthquakedata, {
     			style: function (feature) {
     				return {color: feature.properties.color};
     			},
@@ -196,10 +192,11 @@ function GetMap() {
     				layer.bindPopup(popupText);
     			}
     		});
-            var markers = L.markerClusterGroup();
-		    markers.addLayer(earthquakegeojson);
-		    map.addLayer(markers);
-            
+            	var markers = L.markerClusterGroup();
+		markers.addLayer(earthquakegeojson);
+		map.addLayer(markers);
+	    })
+	    
             //Create a group of overlay layers.
             var weatheroverlays = {
                 'Weather - Infrared': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.weather.infrared.main' }),
