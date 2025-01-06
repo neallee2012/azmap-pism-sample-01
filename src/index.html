@@ -274,8 +274,8 @@ function GetMap() {
 			return {color: feature.properties.color};
     		},
     		onEachFeature: function (feature, layer) {
-    			var popupText = 'Fab Name: ' + feature.properties.name;
-			popupText += '<br/>Event Count: ' + feature.properties.count;
+    			var popupText = 'Event Name: ' + feature.properties.name;
+			popupText += '<br/>Severity: ' + feature.properties.severity;
     			if (feature.properties.color) {
     				popupText += '<br/>color: ' + feature.properties.color;
     			}
