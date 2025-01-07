@@ -142,7 +142,8 @@ function GetMap() {
                     {
                         type: "Feature",
                         properties: {
-                            name: "F18 Yard E - 未配戴安全帽",
+                            fab_name: "F18",
+			    event_name: "Yard E - 未配戴安全帽",
                             severity: 2,
                             url: "https://dashboard-pivotenabler-eks002.sa.wise-paas.com/d/VfEEyzxIk/zone_view?var-groupId=R3JvdXA.ZfKqzVIgTAAH3BA-&orgId=5",
 			    color: "blue"
@@ -154,7 +155,8 @@ function GetMap() {
                     },{
                         type: "Feature",
                         properties: {
-                            name: "F18 Yard E - 違規闖入安全區域",
+                            fab_name: "F18",
+			    event_name: "Yard E - 違規闖入安全區域",
                             severity: 1,
                             url: "https://dashboard-pivotenabler-eks002.sa.wise-paas.com/d/VfEEyzxIk/zone_view?var-groupId=R3JvdXA.ZfKqzVIgTAAH3BA-&orgId=5",
 			    color: "blue"
@@ -166,7 +168,8 @@ function GetMap() {
                     },{
                         type: "Feature",
                         properties: {
-                            name: "F18 Yard E - 違規闖入安全區域",
+                            fab_name: "F18",
+			    event_name: "Yard E - 違規闖入安全區域",
                             severity: 1,
                             url: "https://dashboard-pivotenabler-eks002.sa.wise-paas.com/d/VfEEyzxIk/zone_view?var-groupId=R3JvdXA.ZfKqzVIgTAAH3BA-&orgId=5",
 			    color: "blue"
@@ -178,7 +181,8 @@ function GetMap() {
                     },{
                         type: "Feature",
                         properties: {
-                            name: "F13 Yard E - 未配戴安全帽",
+                            fab_name: "F13",
+			    event_name: "Yard E - 未配戴安全帽",
                             severity: 1,
                             url: "https://dashboard-pivotenabler-eks002.sa.wise-paas.com/d/VfEEyzxIk/zone_view?var-groupId=R3JvdXA.ZfKqzVIgTAAH3BA-&orgId=5",
 			    color: "blue"
@@ -191,7 +195,8 @@ function GetMap() {
                     {
                         type: "Feature",
                         properties: {
-                            name: "F14A Yard E - 未穿戴背心",
+                            fab_name: "F14A",
+			    event_name: "Yard E - 未穿戴背心",
                             severity: 2,
                             url: "-",
 			    color: "blue"
@@ -203,7 +208,8 @@ function GetMap() {
                     },{
                         type: "Feature",
                         properties: {
-                            name: "F14A Yard E - 未穿戴背心",
+                            fab_name: "F14A",
+			    event_name: "Yard E - 未穿戴背心",
                             severity: 2,
                             url: "-",
 			    color: "blue"
@@ -215,7 +221,8 @@ function GetMap() {
                     },{
                         type: "Feature",
                         properties: {
-                            name: "F14A Yard E - 未穿戴背心",
+                            fab_name: "F14A",
+			    event_name: "Yard E - 未穿戴背心",
                             severity: 2,
                             url: "-",
 			    color: "blue"
@@ -228,7 +235,8 @@ function GetMap() {
                     {
                         type: "Feature",
                         properties: {
-                            name: "F6 Yard E - 未穿戴背心",
+                            fab_name: "F6",
+			    event_name: "Yard E - 未穿戴背心",
                             severity: 2,
                             url: "-",
 			    color: "blue"
@@ -241,7 +249,8 @@ function GetMap() {
                     {
                         type: "Feature",
                         properties: {
-                            name: "F6 Yard E - 未穿戴背心",
+                            fab_name: "F6",
+			    event_name: "Yard E - 未穿戴背心",
                             severity: 2,
                             url: "-",
 			    color: "blue"
@@ -254,7 +263,8 @@ function GetMap() {
                     {
                         type: "Feature",
                         properties: {
-                            name: "F6 Yard E - 違禁品帶入廠區",
+                            fab_name: "F6",
+			    event_name: "Yard E - 違禁品帶入廠區",
                             severity: 1,
                             url: "-",
 			    color: "blue"
@@ -267,7 +277,8 @@ function GetMap() {
                     {
                         type: "Feature",
                         properties: {
-                            name: "JASM TSMC- 違禁品帶入廠區",
+                            fab_name: "JASM TSMC",
+			    event_name: "Yard E - 違禁品帶入廠區",
                             severity: 1,
                             url: "-",
 			    color: "blue"
@@ -280,7 +291,8 @@ function GetMap() {
                     {
                         type: "Feature",
                         properties: {
-                            name: "JASM TSMC- 違禁品帶入廠區",
+                            fab_name: "JASM TSMC",
+			    event_name: "Yard E - 違禁品帶入廠區",
                             severity: 1,
                             url: "-",
 			    color: "blue"
@@ -293,7 +305,8 @@ function GetMap() {
                     {
                         type: "Feature",
                         properties: {
-                            name: "JASM TSMC- 未穿戴背心",
+                            fab_name: "JASM TSMC",
+			    event_name: "Yard E - 未穿戴背心",
                             severity: 1,
                             url: "-",
 			    color: "blue"
@@ -306,7 +319,8 @@ function GetMap() {
                     {
                         type: "Feature",
                         properties: {
-                            name: "JASM TSMC- 違規闖入安全區域",
+                            fab_name: "JASM TSMC",
+			    event_name: "Yard E - 違規闖入安全區域",
                             severity: 1,
                             url: "-",
 			    color: "blue"
@@ -365,10 +379,10 @@ function GetMap() {
 			return {color: feature.properties.color};
     		},
     		onEachFeature: function (feature, layer) {
-    			var popupText = 'Event Name: ' + feature.properties.name;
+    			var popupText = 'Event Name: ' + feature.properties.fab_name + ' <br/> Event Name: ' + feature.properties.event_name;
 			popupText += '<br/>Severity: ' + feature.properties.severity;
     			if (feature.properties.color) {
-    				popupText += '<br/>color: ' + feature.properties.color;
+    				//popupText += '<br/>color: ' + feature.properties.color;
     			}
     			layer.bindPopup(popupText);
     		}
