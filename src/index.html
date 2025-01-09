@@ -44,7 +44,7 @@ function GetMap() {
             map = L.map('myMap', {
                 center: [24.776061221883467, 120.99635144930664],
                 //zoom: 15
-		zoom: 5
+		zoom: 2
             });
 
             //Alternatively, create an instance of the Azure Maps Tile Layer and add it to the map. 
@@ -644,7 +644,7 @@ function GetMap() {
             L.geoJSON(geojsonData, {
                 onEachFeature: function (feature, layer) {
                     // Add label for each feature
-                    var label = L.marker(layer.getBounds().getCenter(), {
+                    /*var label = L.marker(layer.getBounds().getCenter(), {
                       icon: L.divIcon({
                         iconSize: "auto",
                         html: `<div style="color:#D68B00;border:1px #ccc solid;padding:6px;white-space: nowrap;">${feature.properties.name}</div>`
@@ -663,7 +663,7 @@ function GetMap() {
                         if (feature.properties.url != '-') {
                             window.open(feature.properties.url, "_blank");
                         }
-                    });
+                    });*/
          
                     // Change color
                     if (feature.properties.count > 50) {
@@ -699,7 +699,7 @@ function GetMap() {
 	    eventmarkers.addLayer(psimeventgeojson);
 	    map.addLayer(eventmarkers);
 	    //Earthquake aggregated marker cluster
-	    fetch(earthquakeFeed).then((response) => {
+	    /*fetch(earthquakeFeed).then((response) => {
 	      return response.json();
 	    }).then((data) => {
 	      let earthquakedata = data;
@@ -718,7 +718,7 @@ function GetMap() {
             	var markers = L.markerClusterGroup();
 		markers.addLayer(earthquakegeojson);
 		map.addLayer(markers);
-	    })
+	    })*/
 	    
             //Create a group of overlay layers.
             var weatheroverlays = {
