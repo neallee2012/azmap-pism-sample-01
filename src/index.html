@@ -699,7 +699,7 @@ function GetMap() {
 	    eventmarkers.addLayer(psimeventgeojson);
 	    map.addLayer(eventmarkers);
 	    //Earthquake aggregated marker cluster
-	    /*fetch(earthquakeFeed).then((response) => {
+	    fetch(earthquakeFeed).then((response) => {
 	      return response.json();
 	    }).then((data) => {
 	      let earthquakedata = data;
@@ -718,7 +718,7 @@ function GetMap() {
             	var markers = L.markerClusterGroup();
 		markers.addLayer(earthquakegeojson);
 		map.addLayer(markers);
-	    })*/
+	    })
 	    
             //Create a group of overlay layers.
             var weatheroverlays = {
