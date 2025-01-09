@@ -644,7 +644,7 @@ function GetMap() {
             L.geoJSON(geojsonData, {
                 onEachFeature: function (feature, layer) {
                     // Add label for each feature
-                    /*var label = L.marker(layer.getBounds().getCenter(), {
+                    var label = L.marker(layer.getBounds().getCenter(), {
                       icon: L.divIcon({
                         iconSize: "auto",
                         html: `<div style="color:#D68B00;border:1px #ccc solid;padding:6px;white-space: nowrap;">${feature.properties.name}</div>`
@@ -663,7 +663,7 @@ function GetMap() {
                         if (feature.properties.url != '-') {
                             window.open(feature.properties.url, "_blank");
                         }
-                    });*/
+                    });
          
                     // Change color
                     if (feature.properties.count > 50) {
