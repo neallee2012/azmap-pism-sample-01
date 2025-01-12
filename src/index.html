@@ -160,12 +160,7 @@ function GetMap() {
                 }
             }).addTo(map);
 	    //Routing
-	    function iconByName(name) {
-	      return '<i class="icon icon-'+name+'"></i>';
-	    }
-	    function featureToMarker(feature, latlng) {
-		alert('1');
-		L.Routing.control({
+	    L.Routing.control({
 	        waypoints: [
 	          L.latLng(24.77715, 120.99297),
 		  L.latLng(24.212103641601573, 120.60860587116399),
@@ -174,19 +169,8 @@ function GetMap() {
 	        draggableWaypoints: false,
                 //createMarker: function() { return false; },
                 show: false 
-	       }).addTo(map);
-	       alert('2');
-	    }
-	    var overLayers = [
-		{
-			name: "Route 1",
-			icon: iconByName('bar'),
-			layer: L.geoJson(psimEventGeoJsonData, {pointToLayer: featureToMarker })
-		}
-	    ];
-	    var panelLayers = new L.Control.PanelLayers(overLayers);
-	    map.addControl(panelLayers);
-	    
+	    }).addTo(map);
+	
 	    //PSIM event aggregated marker cluster
   	    var psimeventgeojson = L.geoJson(psimEventGeoJsonData, {
     		style: function (feature) {
