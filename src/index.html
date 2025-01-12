@@ -688,9 +688,11 @@ function GetMap() {
 	    L.Routing.control({
 	      waypoints: [
 	        L.latLng(120.99297123556181, 24.777152249150426),
-		L.latLng(120.60855222359521, 24.21212319007391),
-	        L.latLng(120.258922530010574, 23.166087123302596)
-	       ]
+		L.latLng(120.258922530010574, 23.166087123302596)
+	       ],
+	       draggableWaypoints: false,
+               createMarker: function() { return false; },
+               show: false
 	     }).addTo(map);
 	    //PSIM event aggregated marker cluster
   	    var psimeventgeojson = L.geoJson(psimEventGeoJsonData, {
