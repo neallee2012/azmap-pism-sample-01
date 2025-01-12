@@ -181,7 +181,7 @@ function GetMap() {
 		}
 	    ];
 	    var panelLayers = new L.Control.PanelLayers(overLayers);
-	    //map.addControl(panelLayers);
+	    map.addControl(panelLayers);
 	    
 	    //PSIM event aggregated marker cluster
   	    var psimeventgeojson = L.geoJson(psimEventGeoJsonData, {
