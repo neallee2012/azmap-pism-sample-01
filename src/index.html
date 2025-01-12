@@ -164,6 +164,7 @@ function GetMap() {
 	      return '<i class="icon icon-'+name+'"></i>';
 	    }
 	    function featureToMarker(feature, latlng) {
+		alert('1');
 		L.Routing.control({
 	        waypoints: [
 	          L.latLng(24.77715, 120.99297),
@@ -174,6 +175,7 @@ function GetMap() {
                 //createMarker: function() { return false; },
                 show: false 
 	       }).addTo(map);
+	       alert('2');
 	    }
 	    var overLayers = [
 		{
