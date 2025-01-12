@@ -246,12 +246,12 @@ function GetMap() {
 			  rlayer.eachLayer(function (layer) {
 				    const layerId = rlayer.getLayerId(layer)
 				    alert(layerId);
-				    map.addLayer(layer); 
+				    map.addLayer(rlayer.getLayer(layerId)); 
 				    layer.eachLayer(function (layer) {
 				        const FeatureId = layer.feature.properties.Id
 				    });
 				});
-			  //map.addLayer(rlayer.getLayer(1));      
+			  //map.addLayer(rlayer.getLayer(17464));      
 			}
 	    }, 
 			 'Display Route'
