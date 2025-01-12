@@ -229,8 +229,8 @@ function GetMap() {
 		            });*/
 			  var routing = L.Routing.control({
 	                        plan: L.Routing.plan([
-	                            L.latLng(24.77715, 120.99297),
-	                            L.latLng(23.16608, 120.25892)
+	                            L.latLng(50.07132, 35.14103),
+	                            L.latLng(50.05459, 35.18239)
 	                        ], {
 	                            waypointIcon: function(i) {
 	                                return new L.Icon.Label.Default({
@@ -242,16 +242,8 @@ function GetMap() {
 	                        routeWhileDragging: true,
 	                        routeDragTimeout: 250
 	                    });
-			  rlayer = L.layerGroup([routing]);
-			  rlayer.eachLayer(function (layer) {
-				    const layerId = rlayer.getLayerId(layer)
-				    alert(layerId);
-				    map.addLayer(rlayer.getLayer(layerId)); 
-				    layer.eachLayer(function (layer) {
-				        const FeatureId = layer.feature.properties.Id
-				    });
-				});
-			  //map.addLayer(rlayer.getLayer(17464));      
+	                    rlayer = L.layerGroup([routing]);
+	                    map.addLayer(rlayer);   
 			}
 	    }, 
 			 'Display Route'
