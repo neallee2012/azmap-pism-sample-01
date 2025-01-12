@@ -215,7 +215,7 @@ function GetMap() {
 			  map.removeLayer(rlayer);
 			  rlayer = null;
 			} else {
-			  var routing = L.Routing.control({
+			  /*var routing = L.Routing.control({
 		                waypoints: [
 			          L.latLng(24.77715, 120.99297),
 				  L.latLng(24.212103641601573, 120.60860587116399),
@@ -224,7 +224,22 @@ function GetMap() {
 			        draggableWaypoints: false,
 		                //createMarker: function() { return false; },
 		                show: false 
-		            });
+		            });*/
+			  var routing = L.Routing.control({
+	                        plan: L.Routing.plan([
+	                            L.latLng(24.77715, 120.99297),
+	                            L.latLng(23.16608, 120.25892)
+	                        ], {
+	                            waypointIcon: function(i) {
+	                                return new L.Icon.Label.Default({
+	                                    labelText: String.fromCharCode(65 + i)
+	                                });
+	                            },
+	                            geocoder: L.Control.Geocoder.nominatim()
+	                        }),
+	                        routeWhileDragging: true,
+	                        routeDragTimeout: 250
+	                    });
 			  rlayer = L.layerGroup([routing]);
 			  map.addLayer(rlayer);      
 			}
