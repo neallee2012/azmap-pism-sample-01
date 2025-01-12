@@ -243,8 +243,8 @@ function GetMap() {
 	                        routeDragTimeout: 250
 	                    });
 			  rlayer = L.layerGroup([routing]);
-			   alert('1');
-			  map.addLayer(rlayer);      
+			   alert(rlayer.getLayers());
+			  map.addLayer(rlayer.getLayer(0));      
 			}
 	    }, 
 			 'Display Route'
