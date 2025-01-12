@@ -212,43 +212,52 @@ function GetMap() {
 	    //Routing
 	    var rlayer = null;
             L.easyButton('fa-level-up',
-	        function() {
-		   if(rlayer) {
-			  map.removeLayer(rlayer);
-			  rlayer = null;
-			} else {
-			  /*var routing = L.Routing.control({
-		                waypoints: [
-			          L.latLng(24.77715, 120.99297),
-				  L.latLng(24.212103641601573, 120.60860587116399),
-				  L.latLng(23.16608, 120.25892)
-			        ],
-			        draggableWaypoints: false,
-		                //createMarker: function() { return false; },
-		                show: false 
-		            });*/
-			  var routing = L.Routing.control({
-	                        plan: L.Routing.plan([
-	                            L.latLng(50.07132, 35.14103),
-	                            L.latLng(50.05459, 35.18239)
-	                        ], {
-	                            waypointIcon: function(i) {
-	                                return new L.Icon.Label.Default({
-	                                    labelText: String.fromCharCode(65 + i)
-	                                });
-	                            },
-	                            geocoder: L.Control.Geocoder.nominatim()
-	                        }),
-	                        routeWhileDragging: true,
-	                        routeDragTimeout: 250
-	                    });
-	                    rlayer = L.layerGroup([routing]);
-	                    map.addLayer(rlayer);   
-			}
-	    }, 
-			 'Display Route'
-	    ).addTo(map);
-
+		        function() {
+			   if(rlayer) {
+				  map.removeLayer(rlayer);
+				  rlayer = null;
+				} else {
+				  /*var routing = L.Routing.control({
+			                waypoints: [
+				          L.latLng(24.77715, 120.99297),
+					  L.latLng(24.212103641601573, 120.60860587116399),
+					  L.latLng(23.16608, 120.25892)
+				        ],
+				        draggableWaypoints: false,
+			                //createMarker: function() { return false; },
+			                show: false 
+			            });*/
+				  var routing = L.Routing.control({
+		                        plan: L.Routing.plan([
+		                            L.latLng(50.07132, 35.14103),
+		                            L.latLng(50.05459, 35.18239)
+		                        ], {
+		                            waypointIcon: function(i) {
+		                                return new L.Icon.Label.Default({
+		                                    labelText: String.fromCharCode(65 + i)
+		                                });
+		                            },
+		                            geocoder: L.Control.Geocoder.nominatim()
+		                        }),
+		                        routeWhileDragging: true,
+		                        routeDragTimeout: 250
+		                    });
+		                    rlayer = L.layerGroup([routing]);
+		                    map.addLayer(rlayer);   
+				}
+		    }, 
+				 'Display Route'
+		    ).addTo(map);
+	     L.Routing.control({
+			                waypoints: [
+				          L.latLng(24.77715, 120.99297),
+					  L.latLng(24.212103641601573, 120.60860587116399),
+					  L.latLng(23.16608, 120.25892)
+				        ],
+				        draggableWaypoints: false,
+			                //createMarker: function() { return false; },
+			                show: false 
+			            }).addTo(map);
             //Create a group of overlay layers.
             /*var trafficflowoverlays = {
                 'Traffic flow - absolute': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.traffic.flow.absolute' }),
