@@ -175,12 +175,11 @@ function GetMap() {
                 show: false 
 	       }).addTo(map);
 	    }
-	    var Drinking_water = "";
 	    var overLayers = [
 		{
 			name: "Route 1",
 			icon: iconByName('bar'),
-			layer: L.geoJson(Drinking_water, {pointToLayer: featureToMarker })
+			layer: L.geoJson(psimEventGeoJsonData, {pointToLayer: featureToMarker })
 		}
 	    ];
 	    var panelLayers = new L.Control.PanelLayers(overLayers);
