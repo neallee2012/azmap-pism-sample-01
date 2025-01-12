@@ -245,6 +245,7 @@ function GetMap() {
 			  rlayer = L.layerGroup([routing]);
 			  rlayer.eachLayer(function (layer) {
 				    const layerId = rlayer.getLayerId(layer)
+				    alert(layerId);
 				    map.addLayer(layer); 
 				    layer.eachLayer(function (layer) {
 				        const FeatureId = layer.feature.properties.Id
