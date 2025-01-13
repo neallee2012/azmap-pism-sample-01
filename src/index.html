@@ -240,13 +240,13 @@ function GetMap() {
 		
 		var myRouting = L.Routing.control({
 		  show: true,
-		  geocoder: L.Control.Geocoder.nominatim(),
+		  //geocoder: L.Control.Geocoder.nominatim(),
 		  autoRoute: true,
 		  waypoints: [
-				          L.latLng(24.77715, 120.99297),
-					  L.latLng(24.212103641601573, 120.60860587116399),
-					  L.latLng(23.16608, 120.25892)
-				        ],
+			L.latLng(24.77715, 120.99297),
+			L.latLng(24.212103641601573, 120.60860587116399),
+			L.latLng(23.16608, 120.25892)
+		  ],
 		  routeWhileDragging: true,
 		  collapsible: true,
 		  lineOptions: defaultLineOptions,
