@@ -212,6 +212,7 @@ function GetMap() {
             //Add the base map and overlay layers to the layers control.
             layerControl = L.control.layers(weatheroverlays).addTo(map);
 	    //Routing
+	        let hideIt = true; 
 	        var routingMarkersPane = map.createPane('routingMarkers');
 		routingMarkersPane.style.zIndex = 600;
 		var routingMarkersShadowPane = map.createPane('routingMarkersShadow');
@@ -227,10 +228,12 @@ function GetMap() {
 		  if (hideIt) {
 		    markersDisplay = 'none';
 		    lineOptions = {styles: [{color: "black", opacity: 0, weight: 0}]};
-		    }
+		    hideIt = false;
+		  }
 		  else {
 		    markersDisplay = '';
 		    lineOptions = defaultLineOptions;
+		    hideIt = true;
 		  }
 		  myRouting.options.lineOptions = lineOptions;
 		  myRouting.route();
@@ -267,7 +270,7 @@ function GetMap() {
 		    title: 'Filtrar rota ida',
 		    icon: 'fa-long-arrow-right',
 		    onClick: function() {
-		      routeHide(true);  
+		      routeHide(hideIt);
 		    }
 		  }]
 		});
