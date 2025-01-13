@@ -262,10 +262,20 @@ function GetMap() {
 		    return marker;
 		  }
 		}).addTo(map);
+	        var stateFilterIda = L.easyButton({
+		  states: [{
+		    title: 'Filtrar rota ida',
+		    icon: 'fa-long-arrow-right',
+		    onClick: function() {
+		      routeHide(true);  
+		    }
+		  }]
+		});
+		stateFilterIda.addTo(map);
 
 
 	
-	     L.Routing.control({
+	     /*L.Routing.control({
 			                waypoints: [
 				          L.latLng(24.77715, 120.99297),
 					  L.latLng(24.212103641601573, 120.60860587116399),
@@ -274,7 +284,7 @@ function GetMap() {
 				        draggableWaypoints: false,
 			                //createMarker: function() { return false; },
 			                show: true 
-			            }).addTo(map);
+			            }).addTo(map);*/
             //Create a group of overlay layers.
             /*var trafficflowoverlays = {
                 'Traffic flow - absolute': L.tileLayer.azureMaps({ authOptions: authOptions, tilesetId: 'microsoft.traffic.flow.absolute' }),
