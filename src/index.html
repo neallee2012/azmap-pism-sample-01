@@ -212,45 +212,59 @@ function GetMap() {
             //Add the base map and overlay layers to the layers control.
             layerControl = L.control.layers(weatheroverlays).addTo(map);
 	    //Routing
-	    var rlayer = null;
-            L.easyButton('fa-level-up',
-		        function() {
-			   if(rlayer) {
-				  map.removeLayer(rlayer);
-				  rlayer = null;
-				} else {
-				  /*var routing = L.Routing.control({
-			                waypoints: [
+	        var routingMarkersPane = map.createPane('routingMarkers');
+		routingMarkersPane.style.zIndex = 600;
+		var routingMarkersShadowPane = map.createPane('routingMarkersShadow');
+		routingMarkersShadowPane.style.zIndex = 500;
+		
+		var defaultLineOptions = {
+		  styles: [{color: "red", opacity: 1}],
+		};
+		
+		function routeHide(hideIt) {
+		  var markersDisplay, lineOptions;
+		  
+		  if (hideIt) {
+		    markersDisplay = 'none';
+		    lineOptions = {styles: [{color: "black", opacity: 0, weight: 0}]};
+		    }
+		  else {
+		    markersDisplay = '';
+		    lineOptions = defaultLineOptions;
+		  }
+		  myRouting.options.lineOptions = lineOptions;
+		  myRouting.route();
+		  routingMarkersPane.style.display = markersDisplay;
+		  routingMarkersShadowPane.style.display = markersDisplay;
+		}
+		
+		var myRouting = L.Routing.control({
+		  show: true,
+		  geocoder: L.Control.Geocoder.nominatim(),
+		  autoRoute: true,
+		  waypoints: [
 				          L.latLng(24.77715, 120.99297),
 					  L.latLng(24.212103641601573, 120.60860587116399),
 					  L.latLng(23.16608, 120.25892)
 				        ],
-				        draggableWaypoints: false,
-			                //createMarker: function() { return false; },
-			                show: false 
-			            });*/
-				  var routing = L.Routing.control({
-		                        plan: L.Routing.plan([
-		                            L.latLng(50.07132, 35.14103),
-		                            L.latLng(50.05459, 35.18239)
-		                        ], {
-		                            waypointIcon: function(i) {
-		                                return new L.Icon.Label.Default({
-		                                    labelText: String.fromCharCode(65 + i)
-		                                });
-		                            },
-		                            geocoder: L.Control.Geocoder.nominatim()
-		                        }),
-		                        routeWhileDragging: true,
-		                        routeDragTimeout: 250
-		                    });
-		                    rlayer = L.layerGroup([routing]);
-		                    L.control.layers(rlayer).addTo(map);
-				    //map.addLayer(rlayer);   
-				}
-		    }, 
-				 'Display Route'
-		    ).addTo(map);
+		  routeWhileDragging: true,
+		  collapsible: true,
+		  lineOptions: defaultLineOptions,
+		  createMarker: function (i, wp, nWps) {
+		    var marker = L.marker(wp.latLng, {
+		      pane: 'routingMarkers',
+		      shadowPane: 'routingMarkersShadow'
+		      draggable: true,
+		      icon: criandoNumeracao(i, way_volta)
+		    });
+		    marker.on("click", (event) => markerClicked(event))
+		    marker.on("dragend", (event) => markerDragEnd(event));
+		    return marker;
+		  }
+		}).addTo(map);
+
+
+	
 	     L.Routing.control({
 			                waypoints: [
 				          L.latLng(24.77715, 120.99297),
