@@ -212,7 +212,7 @@ function GetMap() {
             //Add the base map and overlay layers to the layers control.
             layerControl = L.control.layers(weatheroverlays).addTo(map);
 	    //Routing
-	        let hideIt = true; 
+	        let hideIt = false; 
 	        var routingMarkersPane = map.createPane('routingMarkers');
 		routingMarkersPane.style.zIndex = 600;
 		var routingMarkersShadowPane = map.createPane('routingMarkersShadow');
@@ -229,8 +229,7 @@ function GetMap() {
 		    markersDisplay = 'none';
 		    lineOptions = {styles: [{color: "black", opacity: 0, weight: 0}]};
 		    hideIt = false;
-		  }
-		  else {
+		  } else {
 		    markersDisplay = '';
 		    lineOptions = defaultLineOptions;
 		    hideIt = true;
