@@ -253,7 +253,7 @@ function GetMap() {
 		  createMarker: function (i, wp, nWps) {
 		    var marker = L.marker(wp.latLng, {
 		      pane: 'routingMarkers',
-		      shadowPane: 'routingMarkersShadow'
+		      shadowPane: 'routingMarkersShadow',
 		      draggable: true,
 		      icon: criandoNumeracao(i, way_volta)
 		    });
