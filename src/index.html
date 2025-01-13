@@ -210,7 +210,7 @@ function GetMap() {
             //Add the base map and overlay layers to the layers control.
             layerControl = L.control.layers(weatheroverlays).addTo(map);
 	    //Routing
-	    var rlayer = map._layers[L.stamp(object)];
+	    var rlayer = null;
             L.easyButton('fa-level-up',
 		        function() {
 			   if(rlayer) {
@@ -243,7 +243,8 @@ function GetMap() {
 		                        routeDragTimeout: 250
 		                    });
 		                    rlayer = L.layerGroup([routing]);
-		                    map.addLayer(rlayer);   
+		                    L.control.layers(rlayer).addTo(map);
+				    //map.addLayer(rlayer);   
 				}
 		    }, 
 				 'Display Route'
